@@ -27,7 +27,15 @@ export interface SharedData {
     quote: { message: string; author: string };
     auth: Auth;
     ziggy: Config & { location: string };
+    flash: {
+        success?: string;
+        error?: string;
+        info?: string;
+        warning?: string;
+    };
+
     sidebarOpen: boolean;
+
     [key: string]: unknown;
 }
 
@@ -39,5 +47,6 @@ export interface User {
     email_verified_at: string | null;
     created_at: string;
     updated_at: string;
+
     [key: string]: unknown; // This allows for additional properties...
 }
