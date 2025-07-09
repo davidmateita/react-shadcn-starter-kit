@@ -12,4 +12,4 @@ parameters:
         - bootstrap
         - database/factories
         - routes
-#        - modules
+        #- modules

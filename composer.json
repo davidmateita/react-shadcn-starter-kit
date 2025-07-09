@@ -16,7 +16,7 @@
         "tightenco/ziggy": "^2.4"
     },
     "require-dev": {
-a        "barryvdh/laravel-debugbar": "^3.15",
+        "barryvdh/laravel-debugbar": "^3.15",
         "fakerphp/faker": "^1.23",
         "larastan/larastan": "^3.0",
         "laravel/pail": "^1.2.2",
@@ -65,9 +65,21 @@ a        "barryvdh/laravel-debugbar": "^3.15",
             "Composer\\Config::disableProcessTimeout",
             "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"php artisan inertia:start-ssr\" --names=server,queue,logs,ssr --kill-others"
         ],
+        "lint": [
+            "pint",
+            "npm run lint",
+            "npm run format"
+        ],
+        "phpstan": [
+            "phpstan analyse --memory-limit=2G"
+        ],
+        "test:type": "pest --type-coverage --min=100",
+        "test:unit": "pest --parallel --coverage --exactly=100.0",
         "test": [
             "@php artisan config:clear --ansi",
-            "@php artisan test"
+            "@php artisan test",
+            "@test:type",
+            "@test:unit"
         ]
     },
     "extra": {
